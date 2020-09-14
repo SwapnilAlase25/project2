@@ -1,7 +1,17 @@
 node { 
-    stage('Building') {
-        echo "Building project2 files"
-    }
+    
+     try {
+        stage('Building') {
+            echo "Building project2 files"
+        }
+        
+     } catch(e) {
+            currentBuild.result = 'FAILURE'
+     } finally {
+            if (!currentBuild.result)
+                currentBuild.result = currentBuild.currentResult
+     }
+    
     stage('Testing') {
             echo "Testing project2 files" 
         }
