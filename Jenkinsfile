@@ -1,22 +1,19 @@
-node { 
-    
-     try {
+try {
+    node { 
         stage('Building') {
-            echo "Building project2 files"
-            //error "building error"
-        }
-        
-     } catch(e) {
+                echo "Building project2 files"
+                //error "building error"
+            }
+        stage('Testing') {
+                echo "Testing project2 files" 
+            }
+        stage('Depolying') {
+                 echo "Deploying project2 files" 
+            }
+         }
+   } catch(e) {
             currentBuild.result = 'FAILURE'
-     } finally {
+   } finally {
             if (!currentBuild.result)
                 currentBuild.result = currentBuild.currentResult
-     }
-    
-    stage('Testing') {
-            echo "Testing project2 files" 
-        }
-    stage('Depolying') {
-             echo "Deploying project2 files" 
-        }
- }
+   }
