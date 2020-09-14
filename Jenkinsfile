@@ -3,7 +3,7 @@ node {
      try {
         stage('Building') {
             echo "Building project2 files"
-            error "building error"
+            //error "building error"
         }
         
      } catch(e) {
